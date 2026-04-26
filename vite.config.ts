@@ -30,8 +30,9 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  esbuild: {
-    drop: mode === 'production' ? ['console', 'debugger'] : [],
-    legalComments: 'none',
+  define: {
+    'import.meta.env.VITE_TURSO_DATABASE_URL': JSON.stringify(process.env.VITE_TURSO_DATABASE_URL),
+    'import.meta.env.VITE_TURSO_AUTH_TOKEN': JSON.stringify(process.env.VITE_TURSO_AUTH_TOKEN),
+    'import.meta.env.VITE_ADMIN_PASSWORD': JSON.stringify(process.env.VITE_ADMIN_PASSWORD),
   },
 }));
